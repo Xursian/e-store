@@ -14,11 +14,11 @@ EStore::Application.routes.draw do
   resources :customers
 
 
-  root :to => "provences#index"
+  root :to => "products#index"
   
-  match "/customer" => "customers#index"
-  match "/order" => "orders#index"
-  match "/product" => "products"
+ # match "/customer" => "customers#index"
+ # match "/order" => "orders#index"
+ # match "/product" => "products"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329203543) do
+ActiveRecord::Schema.define(:version => 20130329222412) do
+
+  create_table "Products", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price",          :precision => 8, :scale => 2
+    t.integer  "stock_quantity"
+    t.string   "item"
+    t.decimal  "sale_price",     :precision => 8, :scale => 2
+    t.string   "image"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
 
   create_table "customers", :force => true do |t|
     t.string   "first_name"
@@ -49,18 +61,6 @@ ActiveRecord::Schema.define(:version => 20130329203543) do
     t.decimal  "balance",     :precision => 8, :scale => 2
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
-  end
-
-  create_table "products", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.decimal  "price",          :precision => 8, :scale => 2
-    t.integer  "stock_quantity"
-    t.string   "type"
-    t.decimal  "sale_price",     :precision => 8, :scale => 2
-    t.string   "image"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
   end
 
   create_table "provences", :force => true do |t|
