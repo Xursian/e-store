@@ -11,7 +11,7 @@ one:
   provence_id: 1
   phone_number: MyString
   creditcard_number: MyString
-  current_credits: 
+  current_credits: 9.99
   password: MyString
 
 two:
@@ -25,5 +25,5 @@ two:
   provence_id: 1
   phone_number: MyString
   creditcard_number: MyString
-  current_credits: 
+  current_credits: 9.99
   password: MyString

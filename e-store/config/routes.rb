@@ -1,5 +1,5 @@
 EStore::Application.routes.draw do
-  resources :lineitems
+  resources :provences
 
 
   resources :products
@@ -8,11 +8,12 @@ EStore::Application.routes.draw do
   resources :orders
 
 
+  resources :lineitems
+
+
   resources :customers
 
-
-  resources :provences
-
+  root :to => "provences#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
