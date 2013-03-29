@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @provence.name %>
+</p>
+
+<p>
+  <b>Pst:</b>
+  <%= @provence.pst %>
+</p>
+
+<p>
+  <b>Gst:</b>
+  <%= @provence.gst %>
+</p>
+
+<p>
+  <b>Hst:</b>
+  <%= @provence.hst %>
+</p>
+
+<p>
+  <b>Shipping cost:</b>
+  <%= @provence.shipping_cost %>
+</p>
+
+<p>
+  <b>Eta days:</b>
+  <%= @provence.eta_days %>
+</p>
+
+
+<%= link_to 'Edit', edit_provence_path(@provence) %> |
+<%= link_to 'Back', provences_path %>

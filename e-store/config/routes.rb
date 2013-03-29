@@ -1,4 +1,19 @@
 EStore::Application.routes.draw do
+  resources :lineitems
+
+
+  resources :products
+
+
+  resources :orders
+
+
+  resources :customers
+
+
+  resources :provences
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

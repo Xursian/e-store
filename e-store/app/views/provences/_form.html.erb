@@ -1,0 +1,41 @@
+<%= form_for(@provence) do |f| %>
+  <% if @provence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@provence.errors.count, "error") %> prohibited this provence from being saved:</h2>
+
+      <ul>
+      <% @provence.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :pst %><br />
+    <%= f.text_field :pst %>
+  </div>
+  <div class="field">
+    <%= f.label :gst %><br />
+    <%= f.text_field :gst %>
+  </div>
+  <div class="field">
+    <%= f.label :hst %><br />
+    <%= f.text_field :hst %>
+  </div>
+  <div class="field">
+    <%= f.label :shipping_cost %><br />
+    <%= f.text_field :shipping_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :eta_days %><br />
+    <%= f.number_field :eta_days %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

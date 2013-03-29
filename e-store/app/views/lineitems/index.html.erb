@@ -1,0 +1,31 @@
+<h1>Listing lineitems</h1>
+
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Product</th>
+    <th>Order</th>
+    <th>Sale price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lineitems.each do |lineitem| %>
+  <tr>
+    <td><%= lineitem.quantity %></td>
+    <td><%= lineitem.price %></td>
+    <td><%= lineitem.product_id %></td>
+    <td><%= lineitem.order_id %></td>
+    <td><%= lineitem.sale_price %></td>
+    <td><%= link_to 'Show', lineitem %></td>
+    <td><%= link_to 'Edit', edit_lineitem_path(lineitem) %></td>
+    <td><%= link_to 'Destroy', lineitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lineitem', new_lineitem_path %>

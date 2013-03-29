@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  pst: 9.99
+  gst: 9.99
+  hst: 9.99
+  shipping_cost: 9.99
+  eta_days: 1
+
+two:
+  name: MyString
+  pst: 9.99
+  gst: 9.99
+  hst: 9.99
+  shipping_cost: 9.99
+  eta_days: 1

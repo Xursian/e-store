@@ -1,0 +1,33 @@
+<h1>Listing provences</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Pst</th>
+    <th>Gst</th>
+    <th>Hst</th>
+    <th>Shipping cost</th>
+    <th>Eta days</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @provences.each do |provence| %>
+  <tr>
+    <td><%= provence.name %></td>
+    <td><%= provence.pst %></td>
+    <td><%= provence.gst %></td>
+    <td><%= provence.hst %></td>
+    <td><%= provence.shipping_cost %></td>
+    <td><%= provence.eta_days %></td>
+    <td><%= link_to 'Show', provence %></td>
+    <td><%= link_to 'Edit', edit_provence_path(provence) %></td>
+    <td><%= link_to 'Destroy', provence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Provence', new_provence_path %>
