@@ -8,7 +8,7 @@
 <p>
   <b><%= @product.name %></b>
   <%= image_tag(@product.image, :size => "70x100") %>
-  <b>Price: </b><%= @product.price %> <b></t> Available: </b><%= @product.stock_quantity %><br/>
+  <b>Price: </b><%= @product.price %> <b></t> Stock: </b><%= @product.stock_quantity %><br/>
   <%= @product.description %> <br/>
     <% if @product.sale_price > 0 then %>
       <b>SALE:: SAVE <%= @product.sale_price %></b>
