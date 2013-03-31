@@ -1,32 +1,20 @@
 <h1>Listing products</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Stock quantity</th>
-    <th>Item</th>
-    <th>Sale price</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= product.description %></td>
-    <td><%= product.price %></td>
-    <td><%= product.stock_quantity %></td>
-    <td><%= product.item %></td>
-    <td><%= product.sale_price %></td>
-    <td><%= product.image %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <p>
+  <b>Item:</b>
+  <%= product.item %>
+</p>
+
+<p>
+  <b><%= product.name %></b>
+  <%= image_tag(product.image, :size => "70x100") %>
+  <b>Price: </b><%= product.price %> <b></t> Available: </b><%= product.stock_quantity %><br/>
+  <%= product.description %> <br/>
+    <% if product.sale_price > 0 then %>
+      <b>SALE:: SAVE <%= product.sale_price %></b>
+    <% end %>
+</p>
 <% end %>
 </table>
 

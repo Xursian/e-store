@@ -1,0 +1,75 @@
+Creating DBS
+Cust:
+rails g scaffold Customer first_name:string last_name:string address:string city:string country:string postal_code:string email:string provence_id:integer phone_number:string creditcard_number:string current_credits:decimal(8,2) password:string
+
+Line:
+rails g scaffold Lineitem quantity:integer price:decimal{8,2} product_id:integer order_id:integer sale_price:decimal{8,2}
+
+Order:
+rails g scaffold Order status:string pst_rate:decimal{8,2} gst_rate:decimal{8,2} hst_rate:decimal{8,2} customer_id:integer balance:decimal{8,2}
+
+prod::
+rails g scaffold Product name:string description:text price:decimal{8,2} stock_quantity:integer type:string sale_price:decimal{8,2} image:string
+
+prov::
+rails g scaffold Provence name:string pst:decimal {8,2} gst:decimal {8,2} hst:decimal {8,2} shipping_cost:decima:precision => 8, :scale => 28,2} eta_days:integer
+
+
+
+
+
+
+Validations::
+
+Cust:
+validate :address, :city, :country, :creditcard_number, :current_credits, :email, :first_name, :last_name, :phone_number, :postal_code, :provence_id, :presence => true
+  
+validate :email, :first_name, :last_name, :uniqueness => true
+
+ 
+belongs_to :provence
+  
+has_many :orders
+
+line:
+validate :order_id, :product_id, :quantity, :price, :presence => true
+  
+validate :price, :quantity, :numericality => { :greater_than_or_equal_to => 0 }
+  
+  
+belongs_to :order
+  
+belings_to :product
+
+Order:
+validate :customer_id, :balance, :status, :presence => true
+  
+validate :balance, :hst_rate, :pst_rate, :gst_rate, :numericality => { :greater_than_or_equal_to => 0 }
+  
+  
+belongs_to :customer
+  
+has_many :lineitems, :through => :products
+
+Prod:
+validate :description, :name, :price, :stock_quantity, :type, :presence => true
+  
+validate :name, :uniqueness => true
+  
+validate :price, :numericality => { :greater_than_or_equal_to => 0 }
+  
+  
+belongs_to :lineitems, :through => :orders
+
+Prov:
+validate :eta_days, :shipping_cost, :name, :presence => true
+  
+validate :shipping_cost, :gst, :hst, :pst, :numericality => { :greater_than_or_equal_to => 0 }
+  
+validate :name, :uniqueness => true
+  
+  
+has_many :customers
+
+
+PRODUCTS LISTING INDEX PAGE ORIGINAL::
