@@ -1,0 +1,36 @@
+    provences GET    /provences(.:format)          provences#index
+              POST   /provences(.:format)          provences#create
+ new_provence GET    /provences/new(.:format)      provences#new
+edit_provence GET    /provences/:id/edit(.:format) provences#edit
+     provence GET    /provences/:id(.:format)      provences#show
+              PUT    /provences/:id(.:format)      provences#update
+              DELETE /provences/:id(.:format)      provences#destroy
+     products GET    /products(.:format)           products#index
+              POST   /products(.:format)           products#create
+  new_product GET    /products/new(.:format)       products#new
+ edit_product GET    /products/:id/edit(.:format)  products#edit
+      product GET    /products/:id(.:format)       products#show
+              PUT    /products/:id(.:format)       products#update
+              DELETE /products/:id(.:format)       products#destroy
+       orders GET    /orders(.:format)             orders#index
+              POST   /orders(.:format)             orders#create
+    new_order GET    /orders/new(.:format)         orders#new
+   edit_order GET    /orders/:id/edit(.:format)    orders#edit
+        order GET    /orders/:id(.:format)         orders#show
+              PUT    /orders/:id(.:format)         orders#update
+              DELETE /orders/:id(.:format)         orders#destroy
+    lineitems GET    /lineitems(.:format)          lineitems#index
+              POST   /lineitems(.:format)          lineitems#create
+ new_lineitem GET    /lineitems/new(.:format)      lineitems#new
+edit_lineitem GET    /lineitems/:id/edit(.:format) lineitems#edit
+     lineitem GET    /lineitems/:id(.:format)      lineitems#show
+              PUT    /lineitems/:id(.:format)      lineitems#update
+              DELETE /lineitems/:id(.:format)      lineitems#destroy
+    customers GET    /customers(.:format)          customers#index
+              POST   /customers(.:format)          customers#create
+ new_customer GET    /customers/new(.:format)      customers#new
+edit_customer GET    /customers/:id/edit(.:format) customers#edit
+     customer GET    /customers/:id(.:format)      customers#show
+              PUT    /customers/:id(.:format)      customers#update
+              DELETE /customers/:id(.:format)      customers#destroy
+         root        /                             products#index

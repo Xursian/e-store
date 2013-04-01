@@ -12,11 +12,13 @@
 <p>
   <b><%= product.name %></b>
   <%= image_tag(product.image, :size => "70x100") %>
-  <b>Price: </b><%= product.price %> <b> Stock: </b><%= product.stock_quantity %><br/>
-  <%= product.description %> <br/>
-    <% if product.sale_price > 0 then %>
-      <b>SALE:: SAVE <%= product.sale_price %></b>
+  <b>Price: </b><%= product.price %>
+  <b> Stock: </b><%= product.stock_quantity %>
+  <% if product.sale_price > 0 then %>
+      <b>*SALE* Save: <%= product.sale_price %></b>
     <% end %>
+  <br/>
+  <%= product.description %> <br/>  
 </p>
 
 <br /> 

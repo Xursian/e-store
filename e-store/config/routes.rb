@@ -14,7 +14,7 @@ EStore::Application.routes.draw do
   resources :customers
 
 
-  root :to => "products#index"
+  root :to => "provences#index"
   
  # match "/customer" => "customers#index"
  # match "/order" => "orders#index"
