@@ -11,3 +11,21 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+    background-image:url('wallpaper.jpg');
+    background-size: 100% auto;
+}
+
+.banner {
+    width: 660px;
+    height: 100px;
+    background-color: blue;
+    padding: 0px auto;
+}
+
+ul li {
+    display: inline;
+    margin-right: 20px;
+    font-size: 18px;
+}

@@ -20,8 +20,9 @@ body {
 }
 
 .product:nth-child(even) {
-    background-color: #F4F7F7;
+    background-color: #A3ADBA;
 }
+
 
 b {
     padding-bottom: 10px;
@@ -35,6 +36,9 @@ b {
     float: left;
     padding-right: 20px;
     padding-top: 20px;
+}
+img {
+    border: solid black 1px;
 }
 
 .clear {

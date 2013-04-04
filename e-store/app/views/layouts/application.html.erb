@@ -7,8 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+   <p style="color: green"><%= flash[:notice] %></p>
+  <p style="color: red"><%= flash[:error] %></p>
+  <div class="banner">
+    
+  </div>
+  <div class="nav">
+    <ul>
+      <li><%= link_to 'Customers', customers_path %></li> 
+      <li><%= link_to 'Orders', orders_path %></li>
+      <li><%= link_to 'Provences', provences_path %></li>
+      <li><%= link_to 'Products', products_path %></li>
+      <li>Search: | txt box |</li>
+    </ul>
+  </div>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
