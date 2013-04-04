@@ -5,27 +5,26 @@
 
 <% @products.each do |product| %>
   <p>
-  <b>Item:</b>
-  <%= product.item %>
+  
 </p>
 
-<p>
-  <b><%= product.name %></b>
-  <%= image_tag(product.image, :size => "70x100") %>
-  <b>Price: </b><%= product.price %>
-  <b> Stock: </b><%= product.stock_quantity %>
+<p class="product">
+  <span class="float-right">
+    <%= link_to 'Show', product %> | 
+    <%= link_to 'Edit', edit_product_path(product) %> |
+    <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </span>
+  Score: ??
+  <b class="name">Product: </b><%= product.name %>
+  <b class="item"><%= product.item %></b><br/>
+  <span class="product-icon"><%= image_tag(product.image, :size => "70x100") %></span>
+  <b>Price: </b><%= product.price %><br/>
+  <b> Stock: </b><%= product.stock_quantity %><br/>
   <% if product.sale_price > 0 then %>
-      <b>*SALE* Save: <%= product.sale_price %></b>
+      <b class="sale">*ON SALE* - Save: <%= product.sale_price %></b><br/>
     <% end %>
   <br/>
-  <%= product.description %> <br/>  
+  <b>Description: </b> <%= product.description %>
 </p>
 
-<br /> 
-<%= link_to 'Show', product %> | 
-<%= link_to 'Edit', edit_product_path(product) %> |
-<%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
-
-<br/>
-<%= link_to 'New Product', new_product_path %>
