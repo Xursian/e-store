@@ -4,10 +4,6 @@
 <br/>
 
 <% @products.each do |product| %>
-  <p>
-  
-</p>
-
 <p class="product">
   <span class="float-right">
     <%= link_to 'Show', product %> | 
@@ -18,8 +14,8 @@
   <b class="name">Product: </b><%= product.name %>
   <b class="item"><%= product.item %></b><br/>
   <span class="product-icon"><%= image_tag(product.image, :size => "70x100") %></span>
-  <b>Price: </b><%= product.price %><br/>
-  <b> Stock: </b><%= product.stock_quantity %><br/>
+  <b>Price: </b><%= number_to_currency(product.price) %><br/>
+  <b> Stock: </b><%= number_with_delimiter(product.stock_quantity) %><br/>
   <% if product.sale_price > 0 then %>
       <b class="sale">*ON SALE* - Save: <%= product.sale_price %></b><br/>
     <% end %>
