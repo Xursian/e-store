@@ -41,7 +41,8 @@
   </div>
   <div class="field">
     <%= f.label :provence_id %><br />
-    <%= f.number_field :provence_id %>
+
+    <%= f.collection_select :provence_id, @provences, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :phone_number %><br />

@@ -25,6 +25,7 @@ class CustomersController < ApplicationController
   # GET /customers/new.json
   def new
     @customer = Customer.new
+    @provences = Provence.all
 
     respond_to do |format|
       format.html # new.html.erb

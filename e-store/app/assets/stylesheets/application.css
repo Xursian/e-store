@@ -15,10 +15,16 @@
 body {
     background-image:url('wallpaper.jpg');
     background-size: 100% auto;
+    
+}
+
+a#product_link:hover, a#product_link:active {
+    color: red;
+    background-color: red;
 }
 
 .banner {
-    width: 660px;
+    width: 800px;
     height: 100px;
     background-color: blue;
     padding: 0px auto;
@@ -28,4 +34,25 @@ ul li {
     display: inline;
     margin-right: 20px;
     font-size: 18px;
+}
+
+.nav {
+    width: 800px;
+    float: left;
+}
+
+#search {
+    float: right;
+}
+
+aside {
+    float: right;
+    border: solid black 4px;
+    width: 200px;
+    background-color: #E6F8FB;
+    float: right;
+}
+
+aside h1 {
+    text-align: center;
 }

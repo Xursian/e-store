@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-   <p style="color: green"><%= flash[:notice] %></p>
+  <p style="color: green"><%= flash[:notice] %></p>
   <p style="color: red"><%= flash[:error] %></p>
   <div class="banner">
     
@@ -17,10 +17,15 @@
       <li><%= link_to 'Customers', customers_path %></li> 
       <li><%= link_to 'Orders', orders_path %></li>
       <li><%= link_to 'Provences', provences_path %></li>
-      <li><%= link_to 'Products', products_path %></li>
-      <li>Search: | txt box |</li>
+      <li><%= link_to 'Products', products_path, :id => "product_link"%></li>
+      <li id="search">Search: | txt box |</li>
     </ul>
   </div>
+  <aside>
+    <h1>Cart</h1>
+    <p>Items here</p>
+    <p>Totals here</p>
+  </aside>
 
   <%= yield %>
 

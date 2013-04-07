@@ -1,5 +1,8 @@
 EStore::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   get "login/register"
 
   post "login/create"

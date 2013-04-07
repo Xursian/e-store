@@ -8,15 +8,15 @@ body {
 }
 
 .product {
-    width: 600px;
+    width: 550px;
     border: solid black 1px;
     height: 140px;
     padding: 10px;
     float: left;
     margin-left: 20px;
-    margin-right: 20px;
     margin-top: 0px;
     margin-bottom: 0px;
+    background-color: #E6F8FB;
 }
 
 .product:nth-child(even) {
@@ -52,7 +52,7 @@ img {
 
 .item {
     float: right;
-    padding-right: 80px;
+    padding-right: 60px;
 }
 
 .name {
