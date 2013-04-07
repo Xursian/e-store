@@ -5,5 +5,5 @@ class Lineitem < ActiveRecord::Base
   validates :price, :quantity, :numericality => { :greater_than_or_equal_to => 0 }
   
   belongs_to :order
-  belings_to :product
+  belongs_to :product
 end
