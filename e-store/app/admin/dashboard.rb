@@ -10,6 +10,16 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+    section "Products on SALE!" do
+      table_for Product.where('sale_price > 0').order("item") do
+        column :item
+        column :name
+        column :sale_price
+        column :price
+      end
+      strong { link_to "View All Products", admin_products_path }
+    end
+
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do
