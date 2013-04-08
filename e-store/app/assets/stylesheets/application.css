@@ -24,9 +24,9 @@ a#product_link:hover, a#product_link:active {
 }
 
 .banner {
+    background-image:url('banner.jpg');
     width: 800px;
     height: 100px;
-    background-color: blue;
     padding: 0px auto;
 }
 

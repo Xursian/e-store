@@ -1,3 +1,28 @@
+show.html.erb for PRODUCTS
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= @product.item %>
+</p>
+
+<p>
+  <b><%= @product.name %></b>
+  <%= image_tag(@product.image, :size => "70x100") %>
+  <b>Price: </b><%= @product.price %>
+  <b> Stock: </b><%= @product.stock_quantity %>
+  <% if @product.sale_price > 0 then %>
+      <b>*SALE* Save: <%= @product.sale_price %></b>
+    <% end %>
+  <br/>
+  <%= @product.description %> <br/>  
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+
+INDEX.html.erb for PRODUCTS
 
 <% @products.each do |product| %>
   <p class="product">
@@ -11,11 +36,7 @@
     <b class="item"><%= product.item %></b><br/>
     <span class="product-icon"><%= image_tag(product.image, :size => "70x100") %></span>
     <b>Price: </b><%= number_to_currency(product.price) %><br/>
-    <b> Stock: </b><%= number_with_delimiter(product.stock_quantity) %>
-    <%= button_tag "ADD", :class => "add_btn"%>
-    <%= text_field_tag(:qty, value = nil,
-                                options = {:placeholder => "##",
-                                           :class => "qty_box"})%></br>
+    <b> Stock: </b><%= number_with_delimiter(product.stock_quantity) %><br/>
     <% if product.sale_price > 0 then %>
         <b class="sale">*ON SALE* - Save: <%= product.sale_price %></b><br/>
       <% end %>
@@ -23,7 +44,6 @@
     <b>Description: </b> <%= product.description %>
   </p>
 <% end %>
-
 <!--
 <br/>
 <%= link_to 'New Product', new_product_path %><br/>
