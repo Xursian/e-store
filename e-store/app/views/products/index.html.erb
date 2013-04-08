@@ -1,4 +1,4 @@
-
+<!--
 <% @products.each do |product| %>
   <p class="product">
     <span class="float-right">
@@ -23,7 +23,8 @@
     <b>Description: </b> <%= product.description %>
   </p>
 <% end %>
-
+-->
+<%= render @products %>
 <!--
 <br/>
 <%= link_to 'New Product', new_product_path %><br/>

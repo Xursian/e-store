@@ -32,6 +32,8 @@ EStore::Application.routes.draw do
 
   root :to => "products#index"
   
+  
+  
  # match "/customer" => "customers#index"
  # match "/order" => "orders#index"
  # match "/product" => "products"
