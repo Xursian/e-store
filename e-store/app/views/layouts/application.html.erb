@@ -20,7 +20,12 @@
       <li>
         <%= link_to 'Products', products_path, :id => "product_link"%>
       </li>
-      <li id="search">Search: <%= text_field_tag(:search, value = nil, options = {:placeholder => "for products", :class => "search_box"})%></li>
+      <li id="search">
+        <%= form_tag result_path, :method => 'post' do %>
+          <%= text_field_tag(:keyword, value = nil, options = {:placeholder => "for products", :class => "search_box"})%>
+          <%= submit_tag "Search", :class => "search_btn" %>
+        <% end %>
+      </li>
     </ul>
   </div>
   <aside>

@@ -1,7 +1,6 @@
 EStore::Application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  
 
   get "login/register"
 
@@ -32,11 +31,12 @@ EStore::Application.routes.draw do
 
   root :to => "products#index"
   
-  
+  match "result" => "products#search", :as => "result", :via => :post
   
  # match "/customer" => "customers#index"
  # match "/order" => "orders#index"
  # match "/product" => "products"
 
-
+devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 end

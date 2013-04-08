@@ -8,6 +8,18 @@ class ProductsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @products }
     end
+
+    if session[:count].nil?
+      session[:count] = 1
+    else 
+      session[:count] += 1
+    end
+    
+    @count = session[:count]
+  end
+  
+  def search
+    @products = Product.search(params[:search])
   end
 
   # GET /products/1
@@ -79,5 +91,11 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @keyword = params[:keyword]
+    
+    @products = Product.where("name LIKE ?", "%#{@keyword}%")
   end
 end

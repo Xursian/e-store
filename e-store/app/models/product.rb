@@ -6,4 +6,12 @@ class Product < ActiveRecord::Base
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }
   
   has_many :lineitems
+  
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
 end
