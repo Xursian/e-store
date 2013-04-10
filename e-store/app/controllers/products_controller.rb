@@ -98,4 +98,24 @@ class ProductsController < ApplicationController
     
     @products = Product.where("name LIKE ?", "%#{@keyword}%")
   end
+  
+  def add_product_to_cart
+    session[:cart] = []  if session[:cart].nil?
+  ##  session[:test] = { :id => params[:id], :qty => params[:qty] }
+   session[:cart] << Cart_item.new(params[:id], params[:qty])
+    redirect_to root_url
+  end
+  
+  def remove_product_to_cart
+  #  session[:cart].delete(params[:id])
+    session[:cart].delete(params[:id])
+    redirect_to root_url
+  end
+  
+  def clear_cart
+    session[:cart] = nil
+    redirect_to root_url
+  end
+  
+  
 end

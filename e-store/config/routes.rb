@@ -33,6 +33,8 @@ EStore::Application.routes.draw do
   
   match "result" => "products#search", :as => "result", :via => :post
   
+  match "add_product_to_cart" => "products#add_product_to_cart", :as => "add_product_to_cart", :via => :post
+  
  # match "/customer" => "customers#index"
  # match "/order" => "orders#index"
  # match "/product" => "products"

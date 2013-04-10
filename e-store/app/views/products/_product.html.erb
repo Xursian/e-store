@@ -1,4 +1,4 @@
-<p class="product">
+<div class="product">
   <span class="float-right">
     <%= link_to 'Inspect', product %> | 
     <%= link_to 'Edit', edit_product_path(product) %> |
@@ -10,13 +10,22 @@
   <span class="product-icon"><%= image_tag(product.image, :size => "70x100") %></span>
   <b>Price: </b><%= number_to_currency(product.price) %><br/>
   <b> Stock: </b><%= number_with_delimiter(product.stock_quantity) %>
-  <%= button_tag "ADD", :class => "add_btn"%>
-  <%= text_field_tag(:qty, value = nil,
-                              options = {:placeholder => "##",
-                                         :class => "qty_box"})%></br>
+  
+  
+  <%= form_tag add_product_to_cart_path, :class => "form", :method => 'post' do %> 
+    <%= submit_tag "ADD", :class => "add_btn"%>
+    <%= text_field_tag(:qty, value = nil,
+                                options = {:placeholder => "##",
+                                           :class => "qty_box"})%>
+    <%= hidden_field_tag(:id, product.id.to_s) %></br>
+  <% end %>
+  
+  
+  
+  
   <% if product.sale_price > 0 then %>
       <b class="sale">*ON SALE* - Save: <%= product.sale_price %></b><br/>
     <% end %>
   <br/>
   <b>Description: </b> <%= product.description %>
-</p>
+</div>
