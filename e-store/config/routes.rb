@@ -31,6 +31,8 @@ EStore::Application.routes.draw do
 
   root :to => "products#index"
   
+#  match "admin" => "active_admin/devise/sessions#new",:as => "admin"
+  
   match "result" => "products#search", :as => "result", :via => :post
   
   match "add_product_to_cart" => "products#add_product_to_cart", :as => "add_product_to_cart", :via => :post
