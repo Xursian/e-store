@@ -30,10 +30,23 @@ a#product_link:hover, a#product_link:active {
     padding: 0px auto;
 }
 
+#cart_items {
+    border: solid black 1px;
+}
+
 ul li {
     display: inline;
     margin-right: 20px;
     font-size: 18px;
+}
+
+.remove_btn {
+    text-align: center;
+}
+
+.product-icon_mini {
+    float: left;
+    padding: 10px
 }
 
 .nav {
@@ -41,18 +54,20 @@ ul li {
     float: left;
 }
 
-#search {
+#search, .float_right {
     float: right;
 }
 
-aside {
-    float: right;
+#side_checkout, #side_cart {
     border: solid black 4px;
     width: 200px;
     background-color: #E6F8FB;
-    float: right;
 }
 
-aside h1 {
+#side_checkout {
+    border-top: solid black 1px !important;
+}
+
+#side_checkout h1, #side_cart h1 {
     text-align: center;
 }

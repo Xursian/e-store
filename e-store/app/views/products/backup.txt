@@ -52,3 +52,12 @@ INDEX.html.erb for PRODUCTS
 <%= link_to 'Provences', provences_path %>
 -->
 
+
+****Cart from application aside
+<h1>Cart</h1>
+<% session[:cart].each do |cart|%>
+<p>Product NO: <%= cart.itemNo %>
+<br/>
+Product QTY: <%= cart.itemQty %>
+</p>
+  <% end %>

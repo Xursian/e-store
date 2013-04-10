@@ -107,15 +107,27 @@ class ProductsController < ApplicationController
   end
   
   def remove_product_to_cart
-  #  session[:cart].delete(params[:id])
-    session[:cart].delete(params[:id])
+    session[:cart].delete(:Cart_item)
     redirect_to root_url
   end
   
   def clear_cart
-    session[:cart] = nil
+   # session[:cart] = nil
+    
     redirect_to root_url
   end
   
+  def checkout
+    session[:test] = params
+    
+    if params[:commit] == "Clear Cart!" then
+      reset_session
+    else
+      
+    end
+    
+    ##checkout
+    redirect_to root_url
+  end
   
 end

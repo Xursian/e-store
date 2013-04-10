@@ -6,7 +6,8 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>  
+<body>
+  <%= debug session[:test] %>
   <p style="color: green"><%= flash[:notice] %></p>
   <p style="color: red"><%= flash[:error] %></p>
   <div class="banner">
@@ -31,17 +32,30 @@
       </li>
     </ul>
   </div>
-  <aside>
-    <h1>Cart</h1>
-    <% session[:cart].each do |cart|%>
-    <p>Product NO: <%= cart.itemNo %>
-    <br/>
-    Product QTY: <%= cart.itemQty %>
-    </p>
-    
-  <% end %>
-  </aside>
-
+  <div class="float_right">
+    <aside id="side_cart">
+      <h1>Cart</h1>
+      <% session[:cart].reverse.each do |cart|%>
+        <%= form_tag remove_product_to_cart_path, :method => 'post' do %>
+        <% @product = Product.where(:id => "#{cart.itemNo}").first %>
+        <div id="cart_items">
+          <span class="product-icon_mini"><%= image_tag(@product.image, :size => "35x50") %></span>
+            <p><b><%= @product.name %></b><br/>
+            <%= cart.itemQty %> @ <%= @product.price - @product.sale_price %>/ea.<br/>
+            Sub total: $<%= @product.price * @product.stock_quantity %><br/>
+            <%= submit_tag "Remove", :class => "remove_btn" %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </aside>
+    <aside id="side_checkout">
+      <h1>Checkout</h1>
+      <%= form_tag checkout_path, :method => 'post' do %>
+        <%= submit_tag "Check Out!", :class => "checkout_btn" %>
+        <%= submit_tag "Clear Cart!", :class => "clear_cart_btn" %>
+      <% end %>
+    </aside>
+  </div>
   <%= yield %>
 
 </body>

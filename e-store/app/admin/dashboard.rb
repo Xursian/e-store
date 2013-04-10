@@ -13,7 +13,7 @@ ActiveAdmin.register_page "Dashboard" do
     ##create a table on the dashboard
     section "Products on SALE!" do
       ##select items on sales, and order by item
-      table_for Product.where('sale_price > 0').order("item") do
+      table_for Product.where('sale_price > 0').order('item DESC') do
         ##add columns
         column :item
         column :name do |prod|

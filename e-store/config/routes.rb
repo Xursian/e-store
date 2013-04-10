@@ -37,6 +37,11 @@ EStore::Application.routes.draw do
   
   match "add_product_to_cart" => "products#add_product_to_cart", :as => "add_product_to_cart", :via => :post
   
+  match "remove_product_to_cart" => "products#remove_product_to_cart", :as => "remove_product_to_cart", :via => :post
+  
+  match "checkout" => "products#checkout", :as => "checkout", :via => :post
+ # match "checkout" => "products#clear_cart", :as => "clear_cart", :via => :post
+  
  # match "/customer" => "customers#index"
  # match "/order" => "orders#index"
  # match "/product" => "products"
