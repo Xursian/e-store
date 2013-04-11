@@ -135,11 +135,14 @@ class ProductsController < ApplicationController
       ##resets all the sessions on clear cart
       #session[:cart] = nil
       reset_session
-      redirect_to root_url
     else
       ##we want to sumbit to our checkout page with summary
-      redirect_to purchase_url
+     # redirect_to purchase_url
+     if not session[:cart] == []
+       redirect_to new_customer_url and return
+     end
     end
+    redirect_to root_url
   end
   
   def purchase
