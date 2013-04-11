@@ -41,6 +41,9 @@ EStore::Application.routes.draw do
   
   match "checkout" => "products#checkout", :as => "checkout", :via => :post
  # match "checkout" => "products#clear_cart", :as => "clear_cart", :via => :post
+ 
+ # match "purchase" => "products#purchase", :as => "purchase", :via => :post
+  match "purchase" => "products#purchase", :as => "purchase", :via => :get
   
  # match "/customer" => "customers#index"
  # match "/order" => "orders#index"

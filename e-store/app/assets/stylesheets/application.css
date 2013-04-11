@@ -28,6 +28,9 @@ a#product_link:hover, a#product_link:active {
     width: 800px;
     height: 100px;
     padding: 0px auto;
+    -webkit-box-shadow: 1px 13px 17px rgba(255, 255, 0, 0.75);
+    -moz-box-shadow:    1px 13px 17px rgba(255, 255, 0, 0.75);
+    box-shadow:         1px 13px 17px rgba(255, 255, 0, 0.75);
 }
 
 #cart_items {
@@ -38,6 +41,11 @@ ul li {
     display: inline;
     margin-right: 20px;
     font-size: 18px;
+    text-shadow: 2px 2px 6px rgba(255, 0, 0, 1);
+}
+
+ul li a {
+    color: red !important;
 }
 
 .remove_btn {
@@ -70,4 +78,5 @@ ul li {
 
 #side_checkout h1, #side_cart h1 {
     text-align: center;
+    transform:rotate(-15deg);
 }

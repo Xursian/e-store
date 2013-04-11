@@ -12,7 +12,7 @@
   <div class="banner">
     
   </div>
-  <div class="nav">
+  <nav class="nav">
     <ul>
       <li><%= link_to 'Customers', customers_path %></li> 
       <li><%= link_to 'Orders', orders_path %></li>
@@ -30,8 +30,8 @@
         <% end %>
       </li>
     </ul>
-  </div>
-  <div class="float_right">
+  </nav>
+  <section class="float_right">
     <aside id="side_cart">
       <h1>Cart</h1>
       <% session[:cart].reverse.each do |cart|%>
@@ -55,8 +55,8 @@
         <%= submit_tag "Clear Cart!", :class => "clear_cart_btn" %>
       <% end %>
     </aside>
-  </div>
+  </section>
   <%= yield %>
-
+  <footer>By Derek Ranger</footer>
 </body>
 </html>

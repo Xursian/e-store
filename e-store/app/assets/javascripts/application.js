@@ -13,3 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+/*
+//change this url to the hosting website name
+if (document.URL == "http://localhost:3000/purchase") {
+    //get the side bar by class name
+    var side = document.getElementsByClassName('float_right').first
+    alert(side);
+    //and remove it from the markup since we don't want it on purchase page
+    side[0].parentNode.removeChild(side[0]);
+}
+*/
+//$('.float_right').remove();
+//$(aside).remove();
