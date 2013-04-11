@@ -1,13 +1,9 @@
 class Cart_item
-  attr_reader :itemNo, :itemQty
+  attr_accessor :itemNo, :itemQty
   
   def initialize(itemNo, itemQty)
     @itemNo = itemNo
-    @itemQty = itemQty
-  end
-  
-  def increase_qty(amount)
-    itemQty += amount
+    @itemQty = itemQty.to_i
   end
   
 end

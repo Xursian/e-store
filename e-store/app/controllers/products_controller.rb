@@ -100,32 +100,48 @@ class ProductsController < ApplicationController
   end
   
   def add_product_to_cart
+    ##empty array of cart if its null
     session[:cart] = []  if session[:cart].nil?
-  ##  session[:test] = { :id => params[:id], :qty => params[:qty] }
-   session[:cart] << Cart_item.new(params[:id], params[:qty])
+    
+    ##if item exists in the cart we add qty and findflag true
+    found_flag = false
+    session[:cart].each do |item|
+      if item.itemNo == params[:id]
+        found_flag = true
+        item.itemQty += params[:qty].to_i
+      end
+    end
+    
+    ##push the item into cart if not currently there
+    session[:cart] << Cart_item.new(params[:id], params[:qty])  if found_flag == false
+    
     redirect_to root_url
   end
   
   def remove_product_to_cart
-    session[:cart].delete(:Cart_item)
-    redirect_to root_url
-  end
-  
-  def clear_cart
-   # session[:cart] = nil
+    ##loop threw items in the cart
+    session[:cart].each do |item|
+      ##remove the item that matches selected request
+      session[:cart].delete(item)  if item.itemNo == params[:id]
+    end
     
     redirect_to root_url
   end
   
   def checkout
-    session[:test] = params
-    
+    ## tests the commit value for which checkout button was selected
+    ## theres only Clear Cart! and Checkout!
     if params[:commit] == "Clear Cart!" then
+      ##resets all the sessions on clear cart
+      #session[:cart] = nil
       reset_session
     else
-      
+      ##we want to sumbit to our checkout page with summary
+      ##if there are items in the cart to proccess only
+      if not session[:cart].nil?
+        
+      end
     end
-    
     ##checkout
     redirect_to root_url
   end

@@ -7,7 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= debug session[:test] %>
   <p style="color: green"><%= flash[:notice] %></p>
   <p style="color: red"><%= flash[:error] %></p>
   <div class="banner">
@@ -42,8 +41,9 @@
           <span class="product-icon_mini"><%= image_tag(@product.image, :size => "35x50") %></span>
             <p><b><%= @product.name %></b><br/>
             <%= cart.itemQty %> @ <%= @product.price - @product.sale_price %>/ea.<br/>
-            Sub total: $<%= @product.price * @product.stock_quantity %><br/>
+            Sub total: $<%= ((@product.price - @product.sale_price) * cart.itemQty.to_i) %><br/>
             <%= submit_tag "Remove", :class => "remove_btn" %></p>
+            <%= hidden_field_tag(:id, @product.id.to_s) %>
           <% end %>
         </div>
       <% end %>
