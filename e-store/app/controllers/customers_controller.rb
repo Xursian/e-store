@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
     order.hst_rate = Provence.where(:id => @customer.provence_id)
     order.status = "New:Owes"
     order.balance = 0.0
-    order.save
+    session[:test] = order.save
     ##have the lineitems of his products
     lineitems = Array.new
     session[:cart].each do |cartItem|
@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
       lineitems = order.lineitems.build
       lineitems.quantity = cartItem.itemQty
       lineitems.product_id = product.id
-      lineitems.sales_price = product.sale_price
+      lineitems.sale_price = product.sale_price
       lineitems.save
     end
     

@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }
   
   has_many :lineitems
+  has_many :orders, :through => :lineitems
   
   def self.search(search)
     if search
