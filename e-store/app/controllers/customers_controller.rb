@@ -13,8 +13,28 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
-    @customer = Customer.find(params[:id])
-
+    @customer = Customer.find(params[:id]) ##gets customer info
+    #order = Order.new
+    order = @customer.orders.build
+    order.pst_rate = Provence.where(:id => @customer.provence_id)
+    order.gst_rate = Provence.where(:id => @customer.provence_id)
+    order.hst_rate = Provence.where(:id => @customer.provence_id)
+    order.status = "New:Owes"
+    order.balance = 0.0
+    order.save
+    ##have the lineitems of his products
+    lineitems = Array.new
+    session[:cart].each do |cartItem|
+      product = Product.where(:id => cartItem.itemNo).first
+      lineitems = order.lineitems.build
+      lineitems.quantity = cartItem.itemQty
+      lineitems.product_id = product.id
+      lineitems.sales_price = product.sale_price
+      lineitems.save
+    end
+    
+    redirect_to purchase_path and return
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @customer }
@@ -26,6 +46,7 @@ class CustomersController < ApplicationController
   def new
     @customer = Customer.new
     @provences = Provence.all
+    @customers = Customer.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -80,5 +101,10 @@ class CustomersController < ApplicationController
       format.html { redirect_to customers_url }
       format.json { head :no_content }
     end
+  end
+  
+  def purchase
+   # redirect_to purchase
+   #redirect_to purchase_path and return
   end
 end

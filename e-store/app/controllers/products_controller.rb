@@ -139,14 +139,11 @@ class ProductsController < ApplicationController
       ##we want to sumbit to our checkout page with summary
      # redirect_to purchase_url
      if not session[:cart] == []
-       redirect_to new_customer_url and return
+       ##send customer to create a form with his info
+      redirect_to new_customer_url and return
      end
     end
     redirect_to root_url
-  end
-  
-  def purchase
-    
   end
   
 end

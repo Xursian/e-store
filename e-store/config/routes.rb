@@ -46,7 +46,9 @@ EStore::Application.routes.draw do
   match "purchase" => "products#purchase", :as => "purchase", :via => :get
   match "customers" => "customers#new", :as => "customers", :via => :get
   
-  match "custmers/:id" => "products#purchase", :as => "purchase", :via => :get
+  #match "customers/:id" => "products#purchase", :as => "purchase", :via => :get
+  #match "customers" => "products#purchase", :as => "purchase", :via => :get
+  
   
  # match "/customer" => "customers#index"
  # match "/order" => "orders#index"
