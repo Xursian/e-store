@@ -1,4 +1,77 @@
-<% if session[:cart].empty? %>
-  <p id="error">Please purchase some products.</p>
-<% end %>
-<h1>CHECK OUT TIME!!</h1>
+<html>
+	<body>
+<!--	<% if session[:cart].empty? %>
+	  <p id="error">Please purchase some products.</p>
+	<% end %>
+-->
+		<h1>CHECK OUT!!</h1>
+		<% customer = Customer.where(:id => session[:customer_id]).first %>
+		<% items = [] %>
+		<% session[:lineitem_ids].each do |item| %>
+		<% items << Product.where(:id => item.to_i).first %>
+		<% end %>
+<!-- 	<%= debug session[:customer_id] %>
+	<hr/>
+	<%= debug session[:order_id] %>
+	<hr/>
+	<%= debug session[:lineitem_ids] %>
+	<hr/> -->
+
+		<div id="custInfo">			
+			<p>
+				<b><u>Customer Information:</u></b><br/>
+				<%= customer.first_name %> <%= customer.last_name %><br/>
+				<%= customer.address %> <br/>
+				<%= customer.city %> <%= customer.provence.code %> <br/>
+				<%= customer.postal_code %>
+			</p>			
+		</div>
+		<hr/>
+		<% total_sub_cost = 0.0 %>
+		<% total_gst_cost = 0.0 %>
+		<% total_pst_cost = 0.0 %>
+		<% total_hst_cost = 0.0 %>
+		<% grand_total_cost = 0.0 %>
+		<div id="itemInfo">
+			<b><u>Item Information:</u></b>
+			<div id="small_item">
+			<% session[:cart].each do |item| %>
+				<% @product = Product.where(:id => "#{item.itemNo}").first %>
+				<p><span class="float_left">
+					<%= image_tag(@product.image, :size => "35x50") %></span>
+					<%= @product.name %><br/>
+					QTY: <%= item.itemQty %> <br/>
+					Cost: <%= @product.price - @product.sale_price %>/ea.<br/>
+					Sub total: $<%= ((@product.price - @product.sale_price) * item.itemQty.to_i) %>
+
+					<% total_sub_cost += ((@product.price - @product.sale_price) * item.itemQty.to_i) %>
+				</p>
+			<% end %>
+			</div>
+		</div>
+		<hr/>
+		<% order = Order.where(:id => session[:order_id]).first %>
+		<% total_pst_cost += order.pst_rate * total_sub_cost %>
+		<% total_gst_cost += order.pst_rate * total_sub_cost %>
+		<% total_hst_cost += order.pst_rate * total_sub_cost %>
+
+		<% grand_total_cost += (
+			total_pst_cost + 
+			total_gst_cost +
+			total_hst_cost ) %>
+		<div id="summary">
+			<b><u>Final Cost Summary:</u></b>
+			<p>
+				Subtotal: <%= number_to_currency(total_sub_cost) %><br/>
+				Total PST: <%= number_to_currency(total_pst_cost) %><br/>
+				Total GST: <%= number_to_currency(total_gst_cost) %><br/>
+				Total HST: <%= number_to_currency(total_hst_cost) %><br/>
+				Grand Total: <%= number_to_currency(grand_total_cost) %>
+			</p>
+		</div>
+		<hr/>
+		<div id="choices">
+			<p>ACCEPT BTN (pay) | CANCEL BTN(clear session -> root_url)</p>
+		</div>
+	</body>
+</html>

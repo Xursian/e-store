@@ -16,14 +16,22 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id]) ##gets customer info
     #order = Order.new
     order = @customer.orders.build
-    order.pst_rate = Provence.where(:id => @customer.provence_id)
-    order.gst_rate = Provence.where(:id => @customer.provence_id)
-    order.hst_rate = Provence.where(:id => @customer.provence_id)
+    # order.pst_rate = Provence.where(:id => @customer.provence_id)
+    # order.gst_rate = Provence.where(:id => @customer.provence_id)
+    # order.hst_rate = Provence.where(:id => @customer.provence_id)
+    order.pst_rate = @customer.provence.pst
+    order.gst_rate = @customer.provence.gst
+    order.hst_rate = @customer.provence.hst
     order.status = "New:Owes"
     order.balance = 0.0
-    session[:test] = order.save
+    order.save
+    session[:order_id] = order.id
+    session[:customer_id] = @customer.id
+
     ##have the lineitems of his products
     lineitems = Array.new
+    session[:lineitem_ids] = nil
+    session[:lineitem_ids] = []
     session[:cart].each do |cartItem|
       product = Product.where(:id => cartItem.itemNo).first
       lineitems = order.lineitems.build
@@ -31,6 +39,7 @@ class CustomersController < ApplicationController
       lineitems.product_id = product.id
       lineitems.sale_price = product.sale_price
       lineitems.save
+      session[:lineitem_ids] << lineitems.id
     end
     
     redirect_to purchase_path and return
