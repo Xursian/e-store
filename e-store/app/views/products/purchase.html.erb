@@ -64,9 +64,15 @@
 			<b><u>Final Cost Summary:</u></b>
 			<p>
 				Subtotal: <%= number_to_currency(total_sub_cost) %><br/>
+				<% if total_pst_cost > 0 %>
 				Total PST: <%= number_to_currency(total_pst_cost) %><br/>
+				<% end %>
+				<% if total_gst_cost > 0 %>
 				Total GST: <%= number_to_currency(total_gst_cost) %><br/>
+				<% end %>
+				<% if total_hst_cost > 0 %>
 				Total HST: <%= number_to_currency(total_hst_cost) %><br/>
+				<% end %>
 				Grand Total: <%= number_to_currency(grand_total_cost) %>
 			</p>
 		</div>
