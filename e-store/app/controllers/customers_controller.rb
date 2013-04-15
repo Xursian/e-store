@@ -16,9 +16,9 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id]) ##gets customer info
     #order = Order.new
     order = @customer.orders.build
-    # order.pst_rate = Provence.where(:id => @customer.provence_id)
-    # order.gst_rate = Provence.where(:id => @customer.provence_id)
-    # order.hst_rate = Provence.where(:id => @customer.provence_id)
+    # order.pst_rate = Provence.where(:id => @customer.provence_id).first.pst
+    # order.gst_rate = Provence.where(:id => @customer.provence_id).first.gst
+    # order.hst_rate = Provence.where(:id => @customer.provence_id).first.hst
     order.pst_rate = @customer.provence.pst
     order.gst_rate = @customer.provence.gst
     order.hst_rate = @customer.provence.hst

@@ -51,14 +51,15 @@
 		</div>
 		<hr/>
 		<% order = Order.where(:id => session[:order_id]).first %>
-		<% total_pst_cost += order.pst_rate * total_sub_cost %>
-		<% total_gst_cost += order.pst_rate * total_sub_cost %>
-		<% total_hst_cost += order.pst_rate * total_sub_cost %>
+		<% total_pst_cost += customer.provence.pst * total_sub_cost %>
+		<% total_gst_cost += customer.provence.gst * total_sub_cost %>
+		<% total_hst_cost += customer.provence.hst * total_sub_cost %>
 
 		<% grand_total_cost += (
 			total_pst_cost + 
 			total_gst_cost +
-			total_hst_cost ) %>
+			total_hst_cost +
+			total_sub_cost ) %>
 		<div id="summary">
 			<b><u>Final Cost Summary:</u></b>
 			<p>
